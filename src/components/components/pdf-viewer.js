@@ -87,20 +87,9 @@ const PdfViewer = ({ pdf }) => {
               >
                 <Button>View</Button>
               </a>
-              {/* <Button onClick={() => downloadPDF()}>Download PDF</Button> */}
             </Box>
           </CardActions>
         </Card>
-        {/* <BasicModal open={open} handleClose={handleClose}>
-          <>
-            <Typography
-              onClick={handleClose}
-              sx={{ display: { xs: "block", sm: "none" }, textAlign: "right" }}
-            >
-              <CloseIcon />
-            </Typography>
-          </>
-        </BasicModal> */}
       </Box>
     </>
   );

@@ -55,7 +55,7 @@ export default function Page() {
             />
               <Box>
                 <br />
-                Already have an account, <a href={"/pdf-help/auth/register"}>Sign in </a>.
+                Already have an account, <a href={"/pdf-help/auth/login"}>Sign in </a>.
               </Box>
                 <br />
               <Button onClick={handleSubmit}>{loading ? "Submitting..": "Submit"}</Button>
