@@ -8,10 +8,13 @@ import Box from "@mui/material/Box";
 import Link from "next/link";
 import "@react-pdf-viewer/core/lib/styles/index.css";
 import { useEffect, useState } from "react";
+import { usePdfAuthContext } from "src/contexts/pdf-auth-context";
 
 const PdfViewer = ({ pdf }) => {
   const [file, setFile] = useState(null);
   const [open, setOpen] = useState(false);
+
+  const { pdf_file } = usePdfAuthContext();
 
   const handleClose = () => {
     setOpen(false);
@@ -25,13 +28,8 @@ const PdfViewer = ({ pdf }) => {
     alink.click();
   };
 
-  const fetchPdf = () => {
-    var requestOptions = {
-      method: "GET",
-      redirect: "follow",
-    };
-
-    fetch(pdf.file).then((response) => {
+  const fetchPdf = async () => {
+    pdf_file(pdf?.id).then((response) => {
       response.blob().then((blob) => {
         const fileURL = window.URL.createObjectURL(blob);
         setFile(fileURL);

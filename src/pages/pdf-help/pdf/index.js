@@ -7,10 +7,9 @@ import Dashboard from "../../../components/components/wrapper/dashboard";
 import { usePdfAuthContext } from "src/contexts/pdf-auth-context";
 
 export default function Page() {
-  // const router = useRouter();
-  // const { fileUrl, fileName } = router.query;
+  const router = useRouter();
   const [file, setFile] = useState(null);
-  const { pdf, router, auth_guard, token } = usePdfAuthContext();
+  const { pdf, auth_guard, pdf_file } = usePdfAuthContext();
 
   const downloadPDF = () => {
     if (!file) return;
@@ -24,16 +23,8 @@ export default function Page() {
     auth_guard()
   }, [])
 
-  const fetchPdf = () => {
-    var myHeaders = new Headers();
-    myHeaders.append("Authorization", `Token ${token}`);
-
-    var requestOptions = {
-      method: "GET",
-      // redirect: "follow",
-    };
-
-    fetch(pdf?.file, requestOptions).then((response) => {
+  const fetchPdf = async () => {
+    pdf_file(pdf?.id).then((response) => {
       response.blob().then((blob) => {
         const fileURL = window.URL.createObjectURL(blob);
         setFile(fileURL);

@@ -195,6 +195,13 @@ export const AuthProvider = ({ children }) => {
     } catch (err) {return false}
   }
 
+  const pdf_file = async (id) => {
+    try {
+      const res = await pdfService.pdf_file(id)
+      return res
+    } catch (err) {return err}
+  }
+
   let authContextData = {
     user,
     users,
@@ -226,6 +233,7 @@ export const AuthProvider = ({ children }) => {
     add_comment,
     add_reply,
     access_using_link,
+    pdf_file
   };
 
   return (

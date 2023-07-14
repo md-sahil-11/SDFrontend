@@ -41,6 +41,10 @@ const PDFApi = () => {
     return api.post("replies", data)
   }
 
+  const pdf_file = async (id) => {
+    return api.post(`pdfs/${id}/pdf-view`)
+  }
+
   const apis = {
     retreive,
     list,
@@ -50,7 +54,8 @@ const PDFApi = () => {
     access_using_link,
     list_comments,
     add_comment,
-    add_reply
+    add_reply,
+    pdf_file
   };
 
   return apis;

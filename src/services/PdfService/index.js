@@ -23,7 +23,7 @@ const PDFService = () => {
         .catch((err) => reject(err));
     });
   };
-  
+
   const create = (data) => {
     return new Promise((resolve, reject) => {
       PDFApi.create(data)
@@ -46,23 +46,23 @@ const PDFService = () => {
         .then((res) => resolve(res))
         .catch((err) => reject(err));
     });
-  }
-  
+  };
+
   const access_using_link = (data) => {
     return new Promise((resolve, reject) => {
       PDFApi.access_using_link(data)
         .then((res) => resolve(res))
         .catch((err) => reject(err));
     });
-  }
-  
+  };
+
   const list_comments = (id) => {
     return new Promise((resolve, reject) => {
       PDFApi.list_comments(id)
         .then((res) => resolve(res))
         .catch((err) => reject(err));
     });
-  }
+  };
 
   const add_comment = (data) => {
     return new Promise((resolve, reject) => {
@@ -71,10 +71,18 @@ const PDFService = () => {
         .catch((err) => reject(false));
     });
   };
-  
+
   const add_reply = (data) => {
     return new Promise((resolve, reject) => {
       PDFApi.add_reply(data)
+        .then((res) => resolve(true))
+        .catch((err) => reject(false));
+    });
+  };
+
+  const pdf_file = (id) => {
+    return new Promise((resolve, reject) => {
+      PDFApi.pdf_file(id)
         .then((res) => resolve(true))
         .catch((err) => reject(false));
     });
@@ -89,7 +97,8 @@ const PDFService = () => {
     access_using_link,
     list_comments,
     add_comment,
-    add_reply
+    add_reply,
+    pdf_file
   };
 
   return services;
