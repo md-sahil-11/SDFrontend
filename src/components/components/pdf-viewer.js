@@ -83,8 +83,7 @@ const PdfViewer = ({ pdf }) => {
               }}
             >
               <a
-                href={pdf?.file}
-                target="_blank"
+                href={pdf?.file} target="_blank" rel="noreferrer"
               >
                 <Button>View</Button>
               </a>
