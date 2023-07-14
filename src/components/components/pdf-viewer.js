@@ -87,7 +87,7 @@ const PdfViewer = ({ pdf }) => {
               >
                 <Button>View</Button>
               </a>
-              <Button onClick={() => downloadPDF()}>Download PDF</Button>
+              {/* <Button onClick={() => downloadPDF()}>Download PDF</Button> */}
             </Box>
           </CardActions>
         </Card>
