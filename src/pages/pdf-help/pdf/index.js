@@ -7,9 +7,8 @@ import Dashboard from "../../../components/components/wrapper/dashboard";
 import { usePdfAuthContext } from "src/contexts/pdf-auth-context";
 
 export default function Page() {
-  const router = useRouter();
   const [file, setFile] = useState(null);
-  const { pdf, auth_guard, pdf_file } = usePdfAuthContext();
+  const { pdf, auth_guard, pdf_file, router } = usePdfAuthContext();
 
   const downloadPDF = () => {
     if (!file) return;
