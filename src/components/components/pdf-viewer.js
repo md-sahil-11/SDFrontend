@@ -82,13 +82,12 @@ const PdfViewer = ({ pdf }) => {
                 justifyContent: "end",
               }}
             >
-              <Link
-                href={{
-                  pathname: "/pdf-help/pdf",
-                }}
+              <a
+                href={pdf?.file}
+                target="_blank"
               >
                 <Button>View</Button>
-              </Link>
+              </a>
               <Button onClick={() => downloadPDF()}>Download PDF</Button>
             </Box>
           </CardActions>
