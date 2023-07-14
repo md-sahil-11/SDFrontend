@@ -126,7 +126,7 @@ export default function PdfDetail({ id, link }) {
   };
 
   const copyToClipboard = () => {
-    const base = "http://localhost:3000/pdf-help";
+    const base = "https://sd-frontend-rho.vercel.app/pdf-help";
     const links = base + link;
     toast.success("Link copied.");
     navigator.clipboard.writeText(links);
