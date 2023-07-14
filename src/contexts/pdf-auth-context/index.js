@@ -200,6 +200,7 @@ export const AuthProvider = ({ children }) => {
     users,
     router,
     loading,
+    token,
     setLoading,
     toast,
     pathname,

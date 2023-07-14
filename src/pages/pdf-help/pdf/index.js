@@ -1,28 +1,22 @@
-import { useRouter } from "next/router";
 import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import Link from "next/link";
 import { Worker, Viewer } from "@react-pdf-viewer/core";
 import "@react-pdf-viewer/core/lib/styles/index.css";
 import { useEffect, useState } from "react";
-import { defaultLayoutPlugin } from "@react-pdf-viewer/default-layout";
-import { ButtonGroup } from "@mui/material";
 import Dashboard from "../../../components/components/wrapper/dashboard";
 import { usePdfAuthContext } from "src/contexts/pdf-auth-context";
 
 export default function Page() {
-  const router = useRouter();
-  const { fileUrl, fileName } = router.query;
+  // const router = useRouter();
+  // const { fileUrl, fileName } = router.query;
   const [file, setFile] = useState(null);
-
-  const { auth_guard } = usePdfAuthContext()
+  const { pdf, router, auth_guard, token } = usePdfAuthContext();
 
   const downloadPDF = () => {
     if (!file) return;
     let alink = document.createElement("a");
     alink.href = file;
-    alink.download = `${fileName || "pdfshare"}.pdf`;
+    alink.download = `${pdf?.title || "pdfshare"}.pdf`;
     alink.click();
   };
 
@@ -31,12 +25,15 @@ export default function Page() {
   }, [])
 
   const fetchPdf = () => {
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", `Token ${token}`);
+
     var requestOptions = {
       method: "GET",
-      redirect: "follow",
+      // redirect: "follow",
     };
 
-    fetch(fileUrl, requestOptions).then((response) => {
+    fetch(pdf?.file, requestOptions).then((response) => {
       response.blob().then((blob) => {
         const fileURL = window.URL.createObjectURL(blob);
         setFile(fileURL);
@@ -46,8 +43,8 @@ export default function Page() {
 
 
   useEffect(() => {
-    if (!file) fetchPdf();
-  }, [file]);
+    fetchPdf();
+  }, [pdf]);
 
   return (
     <>

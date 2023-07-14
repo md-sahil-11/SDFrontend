@@ -87,10 +87,6 @@ const PdfViewer = ({ pdf }) => {
               <Link
                 href={{
                   pathname: "/pdf-help/pdf",
-                  query: {
-                    fileUrl: pdf?.file,
-                    fileName: pdf?.title,
-                  },
                 }}
               >
                 <Button>View</Button>
