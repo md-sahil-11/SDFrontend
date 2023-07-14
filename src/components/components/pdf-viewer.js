@@ -4,18 +4,10 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import UserAvatars from "./avatars";
 import Box from "@mui/material/Box";
 import Link from "next/link";
-import { Worker, Viewer } from "@react-pdf-viewer/core";
 import "@react-pdf-viewer/core/lib/styles/index.css";
 import { useEffect, useState } from "react";
-import { defaultLayoutPlugin } from "@react-pdf-viewer/default-layout";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemAvatar from "@mui/material/ListItemAvatar";
-import BasicModal from "./modal";
-import CustomInput from "./input-field";
 
 const PdfViewer = ({ pdf }) => {
   const [file, setFile] = useState(null);
@@ -123,23 +115,3 @@ const PdfViewer = ({ pdf }) => {
 };
 
 export default PdfViewer;
-
-const UserListComponent = () => {
-
-  <Box sx={{ pb: 7 }} ref={ref}>
-    <Typography sx={{ ml: 2 }} variant="h6">
-      Members (10)
-    </Typography>
-    <CssBaseline />
-    <List>
-      {users.map(({ primary, secondary, person }, index) => (
-        <ListItem button key={index + person}>
-          <ListItemAvatar>
-            <Avatar alt="Profile Picture" src={person} />
-          </ListItemAvatar>
-          <ListItemText primary={primary} />
-        </ListItem>
-      ))}
-    </List>
-  </Box>;
-};

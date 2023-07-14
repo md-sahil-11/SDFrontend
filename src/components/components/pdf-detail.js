@@ -44,7 +44,7 @@ export default function PdfDetail({ id, link }) {
   const ref = React.useRef(null);
   const [loading, setLoading] = React.useState(false);
   const [open, setOpen] = React.useState(false);
-  const [users, setUsers] = React.useState([]);
+  const [users, setUsers] = React.useState(allUsers || []);
 
   const handleClose = () => {
     setOpen(false);
@@ -66,18 +66,20 @@ export default function PdfDetail({ id, link }) {
     } else {
       let data = [];
       for (let item of allUsers) {
-        if (item?.name.toUpperCase().indexOf(search.toUpperCase()) > -1 
-          || item?.email.toUpperCase().indexOf(search.toUpperCase()) > -1) {
-            data = [...data,item]
+        if (
+          item?.name.toUpperCase().indexOf(search.toUpperCase()) > -1 ||
+          item?.email.toUpperCase().indexOf(search.toUpperCase()) > -1
+        ) {
+          data = [...data, item];
         }
       }
-      setUsers(data)
+      setUsers(data);
     }
-  }, [search])
+  }, [search]);
 
   const loadData = () => {
     userList();
-    setUsers(allUsers)
+    setUsers(allUsers);
     pdf_members(id);
     list_comments(id);
   };
@@ -156,7 +158,7 @@ export default function PdfDetail({ id, link }) {
           <Typography sx={{ ml: 2 }} variant="h6">
             Comments ({comments?.length})
           </Typography>
-          
+
           <Button sx={{ m: 2 }} variant="contained" onClick={() => setOpen(true)}>
             Add Comment
           </Button>

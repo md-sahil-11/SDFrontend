@@ -9,7 +9,6 @@ export default function Page() {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
-
   const { loginUser, user, router } = usePdfAuthContext();
 
   useEffect(() => {
@@ -17,7 +16,7 @@ export default function Page() {
   }, [user]);
 
   const handleSubmit = (event) => {
-    setLoading(true)
+    setLoading(true);
     event.preventDefault();
 
     if (email && password) {
@@ -26,7 +25,7 @@ export default function Page() {
       form.append("password", password);
       loginUser(form);
     }
-    setLoading(false)
+    setLoading(false);
   };
 
   return (
@@ -51,15 +50,16 @@ export default function Page() {
               value={password}
               setValue={setPassword}
             />
-              <Box>
-                <br />
-                Don't have an account, <a href={"/pdf-help/auth/register"}>Sign up </a>
-                or <a href={"/pdf-help/auth/forgot-password"}>  Forgot password?</a>
-              </Box>
-                <br />
-              <Button onClick={handleSubmit}>{loading ? "Submitting..": "Submit"}</Button>
-
+            <Box>
+              <br />
+              <>
+                Do not have an account, <a href={"/pdf-help/auth/register"}>Sign up </a>
+                or <a href={"/pdf-help/auth/forgot-password"}> Forgot password?</a>
+              </>
             </Box>
+            <br />
+            <Button onClick={handleSubmit}>{loading ? "Submitting.." : "Submit"}</Button>
+          </Box>
         </Paper>
       </Box>
     </center>
